@@ -1,0 +1,83 @@
+{
+    "defaultCols": [
+        {
+            "id": "pending",
+            "title": "Pending"
+        },
+        {
+            "id": "inprocess",
+            "title": "Inprocess"
+        },
+        {
+            "id": "complete",
+            "title": "Complete"
+        }
+    ],
+    "defaultTasks": [
+        {
+            "id": "1",
+            "columnId": "pending",
+            "content": "List admin APIs for dashboard"
+        },
+        {
+            "id": "2",
+            "columnId": "pending",
+            "content": "Develop user registration functionality with OTP delivered on SMS after email confirmation and phone number confirmation"
+        },
+        {
+            "id": "3",
+            "columnId": "inprocess",
+            "content": "Conduct security testing"
+        },
+        {
+            "id": "4",
+            "columnId": "inprocess",
+            "content": "Analyze competitors"
+        },
+        {
+            "id": "5",
+            "columnId": "complete",
+            "content": "Create UI kit documentation"
+        },
+        {
+            "id": "6",
+            "columnId": "complete",
+            "content": "Dev meeting"
+        },
+        {
+            "id": "7",
+            "columnId": "complete",
+            "content": "Deliver dashboard prototype"
+        },
+        {
+            "id": "8",
+            "columnId": "pending",
+            "content": "Optimize application performance"
+        },
+        {
+            "id": "9",
+            "columnId": "pending",
+            "content": "Implement data validation"
+        },
+        {
+            "id": "10",
+            "columnId": "pending",
+            "content": "Design database schema"
+        },
+        {
+            "id": "11",
+            "columnId": "pending",
+            "content": "Integrate SSL web certificates into workflow"
+        },
+        {
+            "id": "12",
+            "columnId": "inprocess",
+            "content": "Implement error logging and monitoring"
+        },
+        {
+            "id": "13",
+            "columnId": "inprocess",
+            "content": "Design and implement responsive UI"
+        }
+    ]
+}
