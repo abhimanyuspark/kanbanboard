@@ -11,14 +11,14 @@ import {
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import { createPortal } from "react-dom";
 import Task from "./Task";
-import { defaultCols, defaultTasks } from "../data/data.json";
+import { status, users } from "../data/data.json";
 import { generateId } from "../utilities/generateId"
 
 const KanBanBoard = () => {
-    const [columns, setColumns] = useState(defaultCols);
+    const [columns, setColumns] = useState(status);
     const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
 
-    const [tasks, setTasks] = useState(defaultTasks);
+    const [tasks, setTasks] = useState(users);
 
     const [activeColumn, setActiveColumn] = useState(null);
 
@@ -54,7 +54,7 @@ const KanBanBoard = () => {
                                     createTask={ createTask }
                                     deleteTask={ deleteTask }
                                     updateTask={ updateTask }
-                                    tasks={ tasks.filter((task) => task.columnId === col.id) }
+                                    tasks={ tasks.filter((task) => task.statusId === col.id) }
                                 />
                             )) }
                         </SortableContext>
@@ -81,7 +81,7 @@ const KanBanBoard = () => {
                                 deleteTask={ deleteTask }
                                 updateTask={ updateTask }
                                 tasks={ tasks.filter(
-                                    (task) => task.columnId === activeColumn.id
+                                    (task) => task.statusId === activeColumn.id
                                 ) }
                             />
                         ) }
@@ -101,10 +101,10 @@ const KanBanBoard = () => {
 
     // * CRUD operations for tasks * //
 
-    function createTask(columnId) {
+    function createTask(statusId) {
         const newTask = {
             id: generateId(),
-            columnId,
+            statusId,
             content: `Task ${tasks.length + 1}`,
         };
 
@@ -140,7 +140,7 @@ const KanBanBoard = () => {
         const filteredColumns = columns.filter((col) => col.id !== id);
         setColumns(filteredColumns);
 
-        const newTasks = tasks.filter((t) => t.columnId !== id);
+        const newTasks = tasks.filter((t) => t.statusId !== id);
         setTasks(newTasks);
     }
 
@@ -213,9 +213,9 @@ const KanBanBoard = () => {
                 const activeIndex = tasks.findIndex((t) => t.id === activeId);
                 const overIndex = tasks.findIndex((t) => t.id === overId);
 
-                if (tasks[activeIndex].columnId != tasks[overIndex].columnId) {
+                if (tasks[activeIndex].statusId != tasks[overIndex].statusId) {
                     // Fix introduced after video recording
-                    tasks[activeIndex].columnId = tasks[overIndex].columnId;
+                    tasks[activeIndex].statusId = tasks[overIndex].statusId;
                     return arrayMove(tasks, activeIndex, overIndex - 1);
                 }
 
@@ -230,7 +230,7 @@ const KanBanBoard = () => {
             setTasks((tasks) => {
                 const activeIndex = tasks.findIndex((t) => t.id === activeId);
 
-                tasks[activeIndex].columnId = overId;
+                tasks[activeIndex].statusId = overId;
                 console.log("DROPPING TASK OVER COLUMN", { activeIndex });
                 return arrayMove(tasks, activeIndex, activeIndex);
             });
